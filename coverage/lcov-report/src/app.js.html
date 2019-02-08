@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/webserver.js</title>
+    <title>Code coverage report for src/app.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">src</a> webserver.js
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> app.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/19</span>
+        <span class='fraction'>0/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/19</span>
+        <span class='fraction'>0/11</span>
       </div>
     </div>
   </div>
@@ -76,8 +76,8 @@
 31
 32
 33
-34</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+34
+35</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -94,18 +94,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -114,8 +116,7 @@ const cors = <span class="cstat-no" title="statement not covered" >require('cors
 const bodyParser = <span class="cstat-no" title="statement not covered" >require('body-parser')</span>
 const path = <span class="cstat-no" title="statement not covered" >require('path')</span>
 const app = <span class="cstat-no" title="statement not covered" >express()</span>
-const PORT = <span class="cstat-no" title="statement not covered" >2424</span>
-const scoreboard = <span class="cstat-no" title="statement not covered" >require('./routes/scoreboard')</span>
+const routes = <span class="cstat-no" title="statement not covered" >require('./routes')</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >app.use(cors())</span>
 <span class="cstat-no" title="statement not covered" >app.use(</span>
@@ -127,19 +128,21 @@ const scoreboard = <span class="cstat-no" title="statement not covered" >require
 &nbsp;
 <span class="cstat-no" title="statement not covered" >app.use(express.static(path.join(__dirname, '..', 'src')))</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.listen(PORT, <span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
-<span class="cstat-no" title="statement not covered" >  console.log('Server started on PORT: ', PORT)</span>
-})
+app.use(require('./routes'))
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.get('/scoreboard', <span class="fstat-no" title="function not covered" >async function(</span>req, res) {</span>
-  // let querystring = window.location.search.substring(1)
-  // console.log(querystring)
-<span class="cstat-no" title="statement not covered" >  console.log(req.query.date)</span>
-  let response = <span class="cstat-no" title="statement not covered" >await scoreboard(req.query.date)</span>
-  // return response
-<span class="cstat-no" title="statement not covered" >  res.status(200)</span>
-<span class="cstat-no" title="statement not covered" >  return res.json({ response })</span>
-})
+// app.listen(PORT, () =&gt; {
+//   console.log('Server started on PORT: ', PORT)
+// })
+&nbsp;
+// app.get('/scoreboard', async function(req, res) {
+//   // let querystring = window.location.search.substring(1)
+//   // console.log(querystring)
+//   console.log(req.query.date)
+//   let response = await scoreboard(req.query.date)
+//   // return response
+//   res.status(200)
+//   return res.json({ response })
+// })
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = app</span>
 &nbsp;</pre></td></tr>
@@ -148,7 +151,7 @@ const scoreboard = <span class="cstat-no" title="statement not covered" >require
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Feb 07 2019 14:47:31 GMT-0800 (Pacific Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Feb 07 2019 16:25:30 GMT-0800 (Pacific Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
